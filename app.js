@@ -1,7 +1,7 @@
 console.log('test');
 (function(){
 	var app = {
-		timer : 500,
+		timer : null,
 		intervalID: null,
 		init : function(){
 			app.listeners();
@@ -11,20 +11,19 @@ console.log('test');
 			$('#stop').on('click', app.stop);
 			$('#reset').on('click', app.reset);
 		},
-		/*choosenNumber : function(){
-			var timeChoose = parseInt($('#choose').val(),10);
-			timeChoose = timer; 
+		choosenNumber : function(){
+			 app.timer = parseInt($('#choose').val(),10);
 			
-		}, */
+		}, 
 		start : function(){
-			app.timer;
+			app.choosenNumber();
 			app.intervalID = setInterval(app.decrement, 1000);
 		},
 		stop : function(){
 			clearInterval(app.intervalID);
 		},
 		reset : function(){
-			app.timer;
+			app.choosenNumber();
 			app.start;
 		},
 		decrement : function(){
@@ -33,7 +32,7 @@ console.log('test');
 		},
 		updateView : function(){
 			var minutes = parseInt(app.timer / 60, 10);
-			var secondes = parseInt(app.timer - minutes * 60, 10);
+			var secondes = app.timer - minutes * 60;
 			$('#minutes').text(minutes);
 			$('#secondes').text(secondes);
 		}
