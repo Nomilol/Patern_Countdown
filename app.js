@@ -12,7 +12,7 @@ console.log('test');
 			$('#reset').on('click', app.reset);
 		},
 		choosenNumber : function(){
-			 app.timer = parseInt($('#choose').val(),10);
+			app.timer = parseInt($('#choose').val(),10);
 			
 		}, 
 		start : function(){
@@ -37,7 +37,7 @@ console.log('test');
 			$('#secondes').text(secondes);
 		}
 
-	}
+	} 
 
 	app.init();
 })();
