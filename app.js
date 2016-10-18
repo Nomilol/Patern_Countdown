@@ -1,46 +1,71 @@
 console.log('test');
 (function(){
+	
 	var app = {
 		timer : null,
 		intervalID: null,
 		init : function(){
+			var self = this ;
 			app.listeners();
 		},
 		listeners : function(){
-			$('#play').on('click', app.start);
-			$('#stop').on('click', app.stop);
-			$('#reset').on('click', app.reset);
+			$('#playButton').on('click', this.start.bind(this));
+			$('#stopButton').on('click', this.stop.bind(this));
+			$('#resetButton').on('click', this.reset.bind(this));
+			//console.log(this);
 		},
 		choosenNumber : function(){
-			 app.timer = parseInt($('#choose').val(),10);
+			this.timer = parseInt($('#choose').val(),10);
+			//console.log(this);
 			
 		}, 
 		start : function(){
-			app.choosenNumber();
-			app.intervalID = setInterval(app.decrement, 1000);
+			this.choosenNumber();
+			this.intervalID = setInterval(this.decrement.bind(this), 1000);
 		},
 		stop : function(){
-			clearInterval(app.intervalID);
+			clearInterval(this.intervalID);
+			
 		},
 		reset : function(){
-			app.choosenNumber();
-			app.start;
+			this.stop();
+			this.choosenNumber();
+			this.start();
 		},
 		decrement : function(){
-			app.timer --;
-			app.updateView();
+			this.timer --;
+			this.updateView();
+			this.progressBar();
+			if(this.timer === 0){
+				clearInterval(this.intervalID);
+			}
 		},
 		updateView : function(){
 			var minutes = parseInt(app.timer / 60, 10);
-			var secondes = app.timer - minutes * 60;
+			var secondes = this.timer - minutes * 60;
 			$('#minutes').text(minutes);
 			$('#secondes').text(secondes);
+			
+
+		},
+		progressBar : function(){
+			var input = $('#choose').val();
+			var temps = this.timer*100/input;
+			$('.progress').css('width', temps + '%');
+			
+			 
+			
 		}
+		
 
-	}
+	} 
 
-	app.init(); 
+	app.init();
 })();
+
+
+
+
 
 
 
