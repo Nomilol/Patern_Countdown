@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
 	<title>Patern Countdown</title>
 </head>
 <body>
@@ -13,12 +14,15 @@
 		<span>:</span>
 		<span id="secondes">00</span>
 	</div>
-	<button id="play">Play</button>
-	<button id="stop">Stop</button>
-	<button id="reset">Reset</button>
-
-
-
+	<button id="playButton">Play</button>
+	<button id="stopButton">Stop</button>
+	<button id="resetButton">Reset</button>
+	<br>
+	<br>
+	<div id="jauge">
+		<div class="progress"></div>
+	</div>
+ 
 
 	<script src='node_modules/jquery/dist/jquery.js'></script>
 	<script src='app.js'></script>
