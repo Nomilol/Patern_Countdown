@@ -39,7 +39,7 @@ console.log('test');
 
 	}
 
-	app.init();
+	app.init(); 
 })();
 
 

@@ -1,0 +1,12 @@
+#jauge{
+	border:solid 1px;
+	color : black;
+	width: 250px;
+	height: 20px;
+}
+
+.progress{
+	background-color: red;
+	height: 20px;
+	width: 100%; 
+}  
